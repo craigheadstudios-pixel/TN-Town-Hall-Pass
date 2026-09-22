@@ -1,0 +1,393 @@
+# Jurisdictions tracked by TN Town Hall Pass.
+#
+# Each entry:
+#   id            - unique slug, used in generated filenames (feeds/jurisdictions/<id>.ics)
+#   county        - TN county name, no "County" suffix
+#   jurisdiction  - display name, e.g. "Rutherford County" or "City of Murfreesboro"
+#   body          - the specific board/council, e.g. "County Commission", "City Council", "Board of Education"
+#   category      - one of: county_commission | city_council | school_board | other
+#   platform      - one of: legistar | ical | civicengage | civicclerk | boarddocs |
+#                    boeconnect | granicus_html | primegov | manual
+#   calendar_url  - the meeting calendar/agenda page (or, for platform: ical, the
+#                    direct .ics feed URL itself)
+#   timezone      - IANA tz name (default America/Chicago; all six pilot counties
+#                    are Middle TN / Central time)
+#
+# Platform-specific options:
+#   legistar_client   - (platform: legistar) the Legistar subdomain client name
+#   body_name         - (platform: legistar) restrict to one EventBodyName if the
+#                        client hosts multiple boards
+#   meetings          - (platform: manual) hand-curated list of {title, start, end,
+#                        location, agenda_url, notes} until a real adapter exists
+#   platform_hint      - vendor identified by research but not yet wired up as an
+#                        automated adapter (civicengage/boarddocs/boeconnect/civicclerk
+#                        adapters aren't implemented yet -- see README's platform
+#                        table). Once an adapter exists and the exact feed URL is
+#                        confirmed live, flip `platform:` to match and drop this hint.
+#   research_note      - caveat from the research pass, e.g. when a URL/platform
+#                        was inferred from search results rather than a live fetch
+#
+# NOTE ON CURRENT STATUS: this sandbox's network policy blocks outbound requests
+# to arbitrary .gov/.com/.org domains (see docs/COVERAGE.md), so none of the URLs
+# below have been fetched live from here -- they come from a research pass done
+# via web search only. Every entry is `platform: manual` with `meetings: []`
+# until someone (or a CI run with normal internet access) confirms the actual
+# feed/page live and either fills in real meetings or wires up a working adapter.
+
+# ---------------------------------------------------------------------------
+# Robertson County
+# ---------------------------------------------------------------------------
+- id: robertson-county-commission
+  county: Robertson
+  jurisdiction: "Robertson County"
+  body: "County Commission"
+  category: county_commission
+  platform: manual
+  calendar_url: "https://www.robertsoncountytn.gov/local_government/minutes_and_agendas.php"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: springfield-city-council
+  county: Robertson
+  jurisdiction: "City of Springfield"
+  body: "Board of Mayor and Aldermen"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.springfieldtn.gov/Calendar.aspx?EID=1424"
+  platform_hint: civicengage
+  meetings: []
+
+- id: greenbrier-board-of-mayor-aldermen
+  county: Robertson
+  jurisdiction: "City of Greenbrier"
+  body: "Board of Mayor and Aldermen"
+  category: city_council
+  platform: manual
+  calendar_url: "https://greenbriertn.org/Calendar.aspx?EID=361"
+  platform_hint: civicengage
+  meetings: []
+
+- id: white-house-board-of-mayor-aldermen
+  county: Robertson
+  jurisdiction: "City of White House"
+  body: "Board of Mayor and Aldermen"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.whitehousetn.gov/government/board-of-mayor-and-aldermen-meeting-agendas-and-minutes"
+  platform_hint: civicengage
+  meetings: []
+
+- id: robertson-county-schools
+  county: Robertson
+  jurisdiction: "Robertson County"
+  body: "Board of Education"
+  category: school_board
+  platform: manual
+  calendar_url: "https://www.rcstn.net/board-of-education/school-board-meetings"
+  platform_hint: custom_pdf
+  meetings: []
+
+# ---------------------------------------------------------------------------
+# Sumner County
+# ---------------------------------------------------------------------------
+- id: sumner-county-commission
+  county: Sumner
+  jurisdiction: "Sumner County"
+  body: "County Commission"
+  category: county_commission
+  platform: manual
+  calendar_url: "https://sumnercountytn.gov/government/agendas-minutes/"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: gallatin-city-council
+  county: Sumner
+  jurisdiction: "City of Gallatin"
+  body: "City Council"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.gallatintn.gov/Calendar.aspx?EID=581"
+  platform_hint: civicengage
+  meetings: []
+
+- id: hendersonville-board-of-mayor-aldermen
+  county: Sumner
+  jurisdiction: "City of Hendersonville"
+  body: "Board of Mayor and Aldermen"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.hvilletn.org/Calendar.aspx?EID=1539"
+  platform_hint: civicengage
+  meetings: []
+
+- id: portland-city-council
+  county: Sumner
+  jurisdiction: "City of Portland"
+  body: "City Council"
+  category: city_council
+  platform: manual
+  calendar_url: "https://cityofportlandtn.gov/438/3432/Meeting-Agenda-Portal"
+  platform_hint: civicclerk
+  research_note: "migrating from CivicEngage AgendaCenter to a CivicClerk portal as of ~2025"
+  meetings: []
+
+- id: westmoreland-city-council
+  county: Sumner
+  jurisdiction: "City of Westmoreland"
+  body: "City Council"
+  category: city_council
+  platform: manual
+  calendar_url: "https://westmorelandtn.gov/city-government/city-council-meeting-info-minutes/"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: millersville-city-commission
+  county: Sumner
+  jurisdiction: "City of Millersville"
+  body: "City Commission"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.cityofmillersville.com/commission/"
+  platform_hint: custom_other
+  meetings: []
+
+- id: sumner-county-schools
+  county: Sumner
+  jurisdiction: "Sumner County"
+  body: "Board of Education"
+  category: school_board
+  platform: manual
+  calendar_url: "https://go.boarddocs.com/tn/scstn/Board.nsf/Public"
+  platform_hint: boarddocs
+  meetings: []
+
+# ---------------------------------------------------------------------------
+# Wilson County
+# ---------------------------------------------------------------------------
+- id: wilson-county-commission
+  county: Wilson
+  jurisdiction: "Wilson County"
+  body: "County Commission"
+  category: county_commission
+  platform: manual
+  calendar_url: "https://wilsoncountytn.gov/Calendar.aspx?EID=734"
+  platform_hint: civicengage
+  meetings: []
+
+- id: lebanon-city-council
+  county: Wilson
+  jurisdiction: "City of Lebanon"
+  body: "City Council"
+  category: city_council
+  platform: manual
+  calendar_url: "https://lebanontn.org/Calendar.aspx?EID=4689"
+  platform_hint: civicengage
+  meetings: []
+
+- id: mt-juliet-city-commission
+  county: Wilson
+  jurisdiction: "City of Mt. Juliet"
+  body: "City Commission"
+  category: city_council
+  platform: manual
+  calendar_url: "https://mtjuliet-tn.legistar.com/"
+  platform_hint: legistar
+  research_note: >
+    Most promising automation candidate in the pilot: appears to run Legistar
+    at mtjuliet-tn.legistar.com, with a legacy/parallel IQM2 portal
+    (mtjulietcitytn.iqm2.com) and a separate CivicEngage general city calendar
+    also live. Confirm which is currently authoritative and the correct
+    legistar_client value (likely "mtjuliettn") before wiring up platform: legistar.
+  meetings: []
+
+- id: watertown-board-of-mayor-aldermen
+  county: Wilson
+  jurisdiction: "Town of Watertown"
+  body: "Board of Mayor and Aldermen"
+  category: city_council
+  platform: manual
+  calendar_url: "https://watertowntn.com/government/city-council/documents/"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: wilson-county-schools
+  county: Wilson
+  jurisdiction: "Wilson County"
+  body: "Board of Education"
+  category: school_board
+  platform: manual
+  calendar_url: "https://go.boarddocs.com/tn/wcschools/Board.nsf/Public"
+  platform_hint: boarddocs
+  meetings: []
+
+# ---------------------------------------------------------------------------
+# Rutherford County
+# ---------------------------------------------------------------------------
+- id: rutherford-county-commission
+  county: Rutherford
+  jurisdiction: "Rutherford County"
+  body: "County Commission"
+  category: county_commission
+  platform: manual
+  calendar_url: "https://rutherfordcountytn.gov/countycommission_schedule"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: murfreesboro-city-council
+  county: Rutherford
+  jurisdiction: "City of Murfreesboro"
+  body: "City Council"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.murfreesborotn.gov/calendar.aspx?CID=48"
+  platform_hint: civicengage
+  meetings: []
+
+- id: smyrna-town-council
+  county: Rutherford
+  jurisdiction: "Town of Smyrna"
+  body: "Town Council"
+  category: city_council
+  platform: manual
+  calendar_url: "https://smyrnatn.portal.civicclerk.com/"
+  platform_hint: civicclerk
+  research_note: "migrated off townofsmyrna.org onto a CivicClerk portal as of ~Sept 2025"
+  meetings: []
+
+- id: la-vergne-board-of-mayor-aldermen
+  county: Rutherford
+  jurisdiction: "City of La Vergne"
+  body: "Board of Mayor and Aldermen"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.lavergnetn.gov/Calendar.aspx"
+  platform_hint: civicengage
+  meetings: []
+
+- id: eagleville-city-council
+  county: Rutherford
+  jurisdiction: "City of Eagleville"
+  body: "City Council"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.eaglevilletn.gov/meeting_calendar.html"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: rutherford-county-schools
+  county: Rutherford
+  jurisdiction: "Rutherford County"
+  body: "Board of Education"
+  category: school_board
+  platform: manual
+  calendar_url: "https://www.rcschools.net/"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: murfreesboro-city-schools
+  county: Rutherford
+  jurisdiction: "Murfreesboro City"
+  body: "Board of Education"
+  category: school_board
+  platform: manual
+  calendar_url: "https://meeting.boeconnect.net/Public/Organization/570"
+  platform_hint: boeconnect
+  research_note: "separate district from Rutherford County Schools"
+  meetings: []
+
+# ---------------------------------------------------------------------------
+# Cheatham County
+# ---------------------------------------------------------------------------
+- id: cheatham-county-commission
+  county: Cheatham
+  jurisdiction: "Cheatham County"
+  body: "County Commission"
+  category: county_commission
+  platform: manual
+  calendar_url: "https://www.cheathamcountytn.gov/minutes_agendas.html"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: ashland-city-board-of-mayor-aldermen
+  county: Cheatham
+  jurisdiction: "Ashland City"
+  body: "Board of Mayor and Aldermen"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.ashlandcitytn.gov/citycouncil"
+  platform_hint: custom_other
+  meetings: []
+
+- id: cheatham-county-schools
+  county: Cheatham
+  jurisdiction: "Cheatham County"
+  body: "Board of Education"
+  category: school_board
+  platform: manual
+  calendar_url: "https://meeting.boeconnect.net/Public/Organization/cheathamcountyschools"
+  platform_hint: boeconnect
+  meetings: []
+
+# ---------------------------------------------------------------------------
+# Putnam County
+# ---------------------------------------------------------------------------
+- id: putnam-county-commission
+  county: Putnam
+  jurisdiction: "Putnam County"
+  body: "County Commission"
+  category: county_commission
+  platform: manual
+  calendar_url: "https://putnamcountytn.gov/commission-agenda"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: cookeville-city-council
+  county: Putnam
+  jurisdiction: "City of Cookeville"
+  body: "City Council"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.cookeville-tn.gov/Calendar.aspx?EID=1372"
+  platform_hint: civicengage
+  meetings: []
+
+- id: monterey-board-of-mayor-aldermen
+  county: Putnam
+  jurisdiction: "Town of Monterey"
+  body: "Board of Mayor and Aldermen"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.townofmontereytn.com/"
+  platform_hint: custom_other
+  meetings: []
+
+- id: baxter-board-of-mayor-councilmen
+  county: Putnam
+  jurisdiction: "City of Baxter"
+  body: "Board of Mayor and Councilmen"
+  category: city_council
+  platform: manual
+  calendar_url: "https://www.cityofbaxter.com/board_agendas_minutes.html"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: algood-city-council
+  county: Putnam
+  jurisdiction: "City of Algood"
+  body: "City Council"
+  category: city_council
+  platform: manual
+  calendar_url: "https://algood-tn.com/index.php/city-council-meetings/"
+  platform_hint: custom_pdf
+  meetings: []
+
+- id: putnam-county-schools
+  county: Putnam
+  jurisdiction: "Putnam County"
+  body: "Board of Education"
+  category: school_board
+  platform: manual
+  calendar_url: "https://www.putnamschools.com/page/meetings-agendas"
+  platform_hint: custom_pdf
+  research_note: "not BoardDocs -- a go.boarddocs.com/fl/putnam org exists but is Putnam County, Florida, a different entity"
+  meetings: []

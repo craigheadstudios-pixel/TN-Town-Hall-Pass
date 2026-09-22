@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TN Town Hall Pass</title>
+  <meta name="description" content="Find city council, county commission, school board, and other public meetings across Tennessee — and subscribe to them on your calendar." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>TN Town Hall Pass</h1>
+      <p class="tagline">Every city council, county commission, and school board meeting we can find in Tennessee — subscribe once, never miss one.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="subscribe-bar">
+      <span class="label">Subscribe</span>
+      <a class="btn primary" id="subscribe-all" href="feeds/all-meetings.ics">All meetings (.ics)</a>
+      <span id="subscribe-county-wrap" hidden>
+        <a class="btn" id="subscribe-county" href="#">This county only</a>
+      </span>
+    </div>
+
+    <div class="controls">
+      <select id="county-filter">
+        <option value="">All counties</option>
+      </select>
+      <select id="category-filter">
+        <option value="">All meeting types</option>
+        <option value="county_commission">County Commission</option>
+        <option value="city_council">City / Town Council</option>
+        <option value="school_board">School Board</option>
+        <option value="other">Other</option>
+      </select>
+      <input type="search" id="search" placeholder="Search jurisdiction or meeting..." />
+    </div>
+
+    <div id="status-line">Loading meetings…</div>
+    <div id="meeting-list"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Data is aggregated automatically where a jurisdiction publishes a machine-readable
+      calendar, and by hand otherwise. Coverage and known gaps are tracked in
+      <a href="https://github.com/craigheadstudios-pixel/tn-town-hall-pass/blob/main/docs/COVERAGE.md">docs/COVERAGE.md</a>.
+      Always confirm meeting time/location with the jurisdiction directly before attending —
+      meetings do get rescheduled or cancelled.
+    </p>
+    <p>
+      <a href="https://github.com/craigheadstudios-pixel/tn-town-hall-pass">Source on GitHub</a>
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

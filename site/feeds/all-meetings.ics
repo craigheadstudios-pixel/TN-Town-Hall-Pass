@@ -1,0 +1,9 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//TN Town Hall Pass//tn-town-hall-pass//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALDESC:Every public meeting tracked by TN Town Hall Pass.
+X-WR-CALNAME:TN Town Hall Pass — All Meetings
+X-PUBLISHED-TTL:PT12H
+END:VCALENDAR

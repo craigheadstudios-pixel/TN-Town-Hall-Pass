@@ -1,0 +1,233 @@
+:root {
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --ink: #1f2a24;
+  --ink-muted: #5a6a60;
+  --border: #dfe0d8;
+  --accent: #2f5d3a;
+  --accent-ink: #ffffff;
+  --tag-county: #eef1e8;
+  --tag-city: #e8f0f3;
+  --tag-school: #f4ecd9;
+  --tag-other: #efe8f4;
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141815;
+    --surface: #1c211d;
+    --ink: #eceee9;
+    --ink-muted: #a5b0a8;
+    --border: #333a34;
+    --accent: #6fae7f;
+    --accent-ink: #0c130e;
+    --tag-county: #232a24;
+    --tag-city: #1f272a;
+    --tag-school: #2a2620;
+    --tag-other: #26222a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #141815;
+  --surface: #1c211d;
+  --ink: #eceee9;
+  --ink-muted: #a5b0a8;
+  --border: #333a34;
+  --accent: #6fae7f;
+  --accent-ink: #0c130e;
+  --tag-county: #232a24;
+  --tag-city: #1f272a;
+  --tag-school: #2a2620;
+  --tag-other: #26222a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.45;
+}
+
+header.site-header {
+  padding: 28px 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+header.site-header .wrap { padding: 0; }
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 1.6rem;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.98rem;
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.controls select,
+.controls input[type="search"] {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.controls input[type="search"] {
+  flex: 1 1 220px;
+}
+
+.subscribe-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 22px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.subscribe-bar span.label {
+  font-weight: 600;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+a.btn, button.btn {
+  display: inline-block;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+a.btn.primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+#status-line {
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+}
+
+.meeting-group h2 {
+  font-size: 1.05rem;
+  margin: 26px 0 10px;
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.meeting-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meeting-card .meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.meeting-card .when {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: var(--ink-muted);
+}
+
+.tag.county_commission { background: var(--tag-county); }
+.tag.city_council { background: var(--tag-city); }
+.tag.school_board { background: var(--tag-school); }
+.tag.other { background: var(--tag-other); }
+
+.meeting-card .title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.meeting-card .location {
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+}
+
+.meeting-card .actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.meeting-card .actions a {
+  font-size: 0.8rem;
+}
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+footer.site-footer {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 20px 16px 50px;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+}
+
+footer.site-footer a { color: var(--accent); }
