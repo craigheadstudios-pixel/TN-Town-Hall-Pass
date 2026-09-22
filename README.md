@@ -62,7 +62,7 @@ up in only one pilot jurisdiction so far. The platform table reflects that:
 |---|---|---|
 | Legistar | Implemented | Uses the public Legistar Web API (JSON), no scraping needed |
 | Direct iCal/RSS feed | Implemented | Any source that already publishes a `.ics` or meeting RSS feed (Granicus/iQM2, CivicClerk, CivicPlus "Notify Me", etc. — set `platform: ical` and point `calendar_url` at the feed itself) |
-| CivicEngage (CivicPlus) | Planned | Most common platform among TN city/town councils; `AgendaCenter` + `Calendar.aspx?EID=` URL pattern. No confirmed feed endpoint yet — see `docs/COVERAGE.md` |
+| CivicEngage (CivicPlus) | Implemented, unverified live | Most common platform among TN city/town councils. Parses the `/AgendaCenter` listing page by matching its date-embedded `ViewFile/Agenda/_MMDDYYYY-<id>` URL convention, with optional heading-based category filtering (`scraper/platforms/civicengage.py`). 10 pilot sources are wired up to it, but the exact AgendaCenter markup assumptions haven't been checked against a live page from this environment (see `docs/COVERAGE.md`) — first real signal comes from a GitHub Actions run |
 | BoardDocs | Planned | Dominant platform for TN school boards; no public feed, requires HTML/JSON scraping |
 | BOEconnect | Planned | Second common TN school-board platform; no public feed |
 | CivicClerk | Planned | Emerging platform (a couple of pilot cities are mid-migration onto it); has a per-event ICS export worth targeting next |
@@ -117,14 +117,17 @@ originally built in has no outbound access to arbitrary external sites (see
 
 ## Project status
 
-Early build. The pipeline, data model, and Legistar/iCal adapters work and
-are tested; `sources.yaml` lists all 32 jurisdictions in the six-county pilot
-with real calendar/agenda page URLs, but every one is still `platform:
-manual` with no meetings yet — see `docs/COVERAGE.md` for exactly what's
-confirmed vs. what still needs a live look and a real adapter (CivicEngage
-and BoardDocs cover most of what's left). A native iPhone/Android app is the
-long-term goal — the `.ics` feeds are the fastest way to get useful today,
-since they work with zero install in every phone's built-in calendar app.
+Early build. The pipeline, data model, and Legistar/iCal/CivicEngage
+adapters work and are tested; `sources.yaml` lists all 33 jurisdictions in
+the six-county pilot with real calendar/agenda page URLs. 10 of them (the
+CivicEngage ones) run against a real adapter now, though it hasn't been
+checked against a live page yet (this project's sandbox has no outbound
+access to external sites — see `docs/COVERAGE.md`); the rest are still
+`platform: manual` with no meetings. BoardDocs and BOEconnect (most school
+boards in the pilot) are the next biggest gap. A native iPhone/Android app
+is the long-term goal — the `.ics` feeds are the fastest way to get useful
+today, since they work with zero install in every phone's built-in calendar
+app.
 
 ## License
 

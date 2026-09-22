@@ -1,13 +1,14 @@
 from scraper.platforms.base import BaseScraper, ScrapeError
 from scraper.platforms.legistar import LegistarScraper
 from scraper.platforms.ical_feed import ICalScraper
+from scraper.platforms.civicengage import CivicEngageScraper
 from scraper.platforms.manual import ManualScraper, UnimplementedPlatformScraper
 
 REGISTRY: dict[str, type[BaseScraper]] = {
     "legistar": LegistarScraper,
     "ical": ICalScraper,
     "manual": ManualScraper,
-    "civicengage": UnimplementedPlatformScraper,
+    "civicengage": CivicEngageScraper,
     "civicclerk": UnimplementedPlatformScraper,
     "boarddocs": UnimplementedPlatformScraper,
     "boeconnect": UnimplementedPlatformScraper,
@@ -28,6 +29,7 @@ __all__ = [
     "ScrapeError",
     "LegistarScraper",
     "ICalScraper",
+    "CivicEngageScraper",
     "ManualScraper",
     "UnimplementedPlatformScraper",
     "REGISTRY",

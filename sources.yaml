@@ -19,20 +19,31 @@
 #                        client hosts multiple boards
 #   meetings          - (platform: manual) hand-curated list of {title, start, end,
 #                        location, agenda_url, notes} until a real adapter exists
+#   category_name      - (platform: civicengage) the board name as it should appear
+#                        in an on-page heading on the AgendaCenter page, used to
+#                        filter out other boards sharing the same AgendaCenter.
+#                        Leave unset when calendar_url is already scoped to one
+#                        category (e.g. a /AgendaCenter/<Board>-<id> sub-path).
+#   default_time        - (platform: civicengage) "HH:MM" 24h fallback used when no
+#                        meeting time can be found in the agenda link's text
 #   platform_hint      - vendor identified by research but not yet wired up as an
-#                        automated adapter (civicengage/boarddocs/boeconnect/civicclerk
-#                        adapters aren't implemented yet -- see README's platform
-#                        table). Once an adapter exists and the exact feed URL is
-#                        confirmed live, flip `platform:` to match and drop this hint.
+#                        automated adapter (boarddocs/boeconnect/civicclerk adapters
+#                        aren't implemented yet -- see README's platform table).
+#                        Once an adapter exists and the exact feed URL is confirmed
+#                        live, flip `platform:` to match and drop this hint.
 #   research_note      - caveat from the research pass, e.g. when a URL/platform
 #                        was inferred from search results rather than a live fetch
 #
 # NOTE ON CURRENT STATUS: this sandbox's network policy blocks outbound requests
 # to arbitrary .gov/.com/.org domains (see docs/COVERAGE.md), so none of the URLs
 # below have been fetched live from here -- they come from a research pass done
-# via web search only. Every entry is `platform: manual` with `meetings: []`
-# until someone (or a CI run with normal internet access) confirms the actual
-# feed/page live and either fills in real meetings or wires up a working adapter.
+# via web search only. The `platform: civicengage` entries run against a real
+# adapter (scraper/platforms/civicengage.py) but its exact AgendaCenter markup
+# assumptions are themselves unverified against a live page -- first real signal
+# on whether they work comes from a GitHub Actions run, which has normal internet
+# access. Every other entry is still `platform: manual` with `meetings: []` until
+# someone confirms the actual feed/page live and either fills in real meetings or
+# wires up a working adapter for that platform.
 
 # ---------------------------------------------------------------------------
 # Robertson County
@@ -52,30 +63,28 @@
   jurisdiction: "City of Springfield"
   body: "Board of Mayor and Aldermen"
   category: city_council
-  platform: manual
-  calendar_url: "https://www.springfieldtn.gov/Calendar.aspx?EID=1424"
-  platform_hint: civicengage
-  meetings: []
+  platform: civicengage
+  calendar_url: "https://www.springfieldtn.gov/AgendaCenter"
+  category_name: "Board of Mayor and Aldermen"
 
 - id: greenbrier-board-of-mayor-aldermen
   county: Robertson
   jurisdiction: "City of Greenbrier"
   body: "Board of Mayor and Aldermen"
   category: city_council
-  platform: manual
-  calendar_url: "https://greenbriertn.org/Calendar.aspx?EID=361"
-  platform_hint: civicengage
-  meetings: []
+  platform: civicengage
+  calendar_url: "https://greenbriertn.org/AgendaCenter"
+  category_name: "Board of Mayor and Aldermen"
 
 - id: white-house-board-of-mayor-aldermen
   county: Robertson
   jurisdiction: "City of White House"
   body: "Board of Mayor and Aldermen"
   category: city_council
-  platform: manual
-  calendar_url: "https://www.whitehousetn.gov/government/board-of-mayor-and-aldermen-meeting-agendas-and-minutes"
-  platform_hint: civicengage
-  meetings: []
+  platform: civicengage
+  calendar_url: "https://www.whitehousetn.gov/AgendaCenter"
+  category_name: "Board of Mayor and Aldermen"
+  research_note: "AgendaCenter URL inferred from CivicPlus's standard fixed route -- the confirmed page found by research was https://www.whitehousetn.gov/government/board-of-mayor-and-aldermen-meeting-agendas-and-minutes, which didn't explicitly show an AgendaCenter link"
 
 - id: robertson-county-schools
   county: Robertson
@@ -105,20 +114,18 @@
   jurisdiction: "City of Gallatin"
   body: "City Council"
   category: city_council
-  platform: manual
-  calendar_url: "https://www.gallatintn.gov/Calendar.aspx?EID=581"
-  platform_hint: civicengage
-  meetings: []
+  platform: civicengage
+  calendar_url: "https://www.gallatintn.gov/AgendaCenter"
+  category_name: "City Council"
 
 - id: hendersonville-board-of-mayor-aldermen
   county: Sumner
   jurisdiction: "City of Hendersonville"
   body: "Board of Mayor and Aldermen"
   category: city_council
-  platform: manual
-  calendar_url: "https://www.hvilletn.org/Calendar.aspx?EID=1539"
-  platform_hint: civicengage
-  meetings: []
+  platform: civicengage
+  calendar_url: "https://www.hvilletn.org/AgendaCenter"
+  category_name: "Board of Mayor and Aldermen"
 
 - id: portland-city-council
   county: Sumner
@@ -169,20 +176,18 @@
   jurisdiction: "Wilson County"
   body: "County Commission"
   category: county_commission
-  platform: manual
-  calendar_url: "https://wilsoncountytn.gov/Calendar.aspx?EID=734"
-  platform_hint: civicengage
-  meetings: []
+  platform: civicengage
+  calendar_url: "https://wilsoncountytn.gov/AgendaCenter"
+  category_name: "County Commission"
 
 - id: lebanon-city-council
   county: Wilson
   jurisdiction: "City of Lebanon"
   body: "City Council"
   category: city_council
-  platform: manual
-  calendar_url: "https://lebanontn.org/Calendar.aspx?EID=4689"
-  platform_hint: civicengage
-  meetings: []
+  platform: civicengage
+  calendar_url: "https://www.lebanontn.org/AgendaCenter/City-Council-5"
+  research_note: "URL already scoped to one category by CivicPlus's per-category AgendaCenter path, so category_name is left unset"
 
 - id: mt-juliet-city-commission
   county: Wilson
@@ -238,10 +243,9 @@
   jurisdiction: "City of Murfreesboro"
   body: "City Council"
   category: city_council
-  platform: manual
-  calendar_url: "https://www.murfreesborotn.gov/calendar.aspx?CID=48"
-  platform_hint: civicengage
-  meetings: []
+  platform: civicengage
+  calendar_url: "https://www.murfreesborotn.gov/AgendaCenter"
+  category_name: "City Council"
 
 - id: smyrna-town-council
   county: Rutherford
@@ -259,10 +263,9 @@
   jurisdiction: "City of La Vergne"
   body: "Board of Mayor and Aldermen"
   category: city_council
-  platform: manual
-  calendar_url: "https://www.lavergnetn.gov/Calendar.aspx"
-  platform_hint: civicengage
-  meetings: []
+  platform: civicengage
+  calendar_url: "https://www.lavergnetn.gov/AgendaCenter"
+  category_name: "Board of Mayor and Aldermen"
 
 - id: eagleville-city-council
   county: Rutherford
@@ -346,10 +349,9 @@
   jurisdiction: "City of Cookeville"
   body: "City Council"
   category: city_council
-  platform: manual
-  calendar_url: "https://www.cookeville-tn.gov/Calendar.aspx?EID=1372"
-  platform_hint: civicengage
-  meetings: []
+  platform: civicengage
+  calendar_url: "https://www.cookeville-tn.gov/AgendaCenter"
+  category_name: "City Council"
 
 - id: monterey-board-of-mayor-aldermen
   county: Putnam
