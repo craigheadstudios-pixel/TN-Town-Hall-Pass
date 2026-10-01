@@ -3,8 +3,9 @@ VERSION:2.0
 PRODID:-//TN Town Hall Pass//tn-town-hall-pass//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALDESC:Every public meeting tracked by TN Town Hall Pass.
-X-WR-CALNAME:TN Town Hall Pass — All Meetings
+X-WR-CALDESC:Meetings for City of Lebanon City Council, via TN Town Hall P
+ ass.
+X-WR-CALNAME:City of Lebanon City Council
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 SUMMARY:City of Lebanon — City Council
