@@ -16,4 +16,14 @@ DESCRIPTION:City Council Worksession\nAgenda: https://www.lebanontn.org/Ag
  g/AgendaCenter/City-Council-5
 URL:https://www.lebanontn.org/AgendaCenter/ViewFile/Agenda/_10052026-989
 END:VEVENT
+BEGIN:VEVENT
+SUMMARY:City of Lebanon — City Council
+DTSTART;TZID=America/Chicago:20261006T180000
+DURATION:PT1H
+UID:e67c4a8850fbac7f@tn-town-hall-pass
+DESCRIPTION:City Council Agenda\nAgenda: https://www.lebanontn.org/AgendaC
+ enter/ViewFile/Agenda/_10062026-990\nSource: https://www.lebanontn.org/Age
+ ndaCenter/City-Council-5
+URL:https://www.lebanontn.org/AgendaCenter/ViewFile/Agenda/_10062026-990
+END:VEVENT
 END:VCALENDAR
