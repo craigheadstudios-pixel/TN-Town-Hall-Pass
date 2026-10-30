@@ -8,12 +8,12 @@ X-WR-CALNAME:TN Town Hall Pass — Wilson County
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 SUMMARY:City of Lebanon — City Council
-DTSTART;TZID=America/Chicago:20261020T180000
+DTSTART;TZID=America/Chicago:20261105T180000
 DURATION:PT1H
-UID:f6a786be2e434338@tn-town-hall-pass
-DESCRIPTION:City Council Agenda\nAgenda: https://www.lebanontn.org/AgendaC
- enter/ViewFile/Agenda/_10202026-991\nSource: https://www.lebanontn.org/Age
- ndaCenter/City-Council-5
-URL:https://www.lebanontn.org/AgendaCenter/ViewFile/Agenda/_10202026-991
+UID:fdc632dc221bd0a1@tn-town-hall-pass
+DESCRIPTION:City Council Worksession\nAgenda: https://www.lebanontn.org/Ag
+ endaCenter/ViewFile/Agenda/_11052026-997\nSource: https://www.lebanontn.or
+ g/AgendaCenter/City-Council-5
+URL:https://www.lebanontn.org/AgendaCenter/ViewFile/Agenda/_11052026-997
 END:VEVENT
 END:VCALENDAR
