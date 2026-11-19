@@ -1,35 +1,7 @@
 {
-  "generated_at": "2026-11-18T19:24:44.163022+00:00",
-  "meeting_count": 1,
-  "counties": [
-    "Wilson"
-  ],
-  "jurisdictions": [
-    {
-      "source_id": "lebanon-city-council",
-      "jurisdiction": "City of Lebanon",
-      "body": "City Council",
-      "county": "Wilson",
-      "category": "city_council",
-      "feed": "feeds/jurisdictions/lebanon-city-council.ics"
-    }
-  ],
-  "meetings": [
-    {
-      "uid": "6990d2a5f7dc22f8@tn-town-hall-pass",
-      "source_id": "lebanon-city-council",
-      "jurisdiction": "City of Lebanon",
-      "body": "City Council",
-      "county": "Wilson",
-      "category": "city_council",
-      "title": "City Council Agenda",
-      "start": "2026-11-17T18:00:00-06:00",
-      "end": null,
-      "location": null,
-      "address": null,
-      "agenda_url": "https://www.lebanontn.org/AgendaCenter/ViewFile/Agenda/_11172026-1002",
-      "source_url": "https://www.lebanontn.org/AgendaCenter/City-Council-5",
-      "notes": null
-    }
-  ]
+  "generated_at": "2026-11-19T19:29:37.685273+00:00",
+  "meeting_count": 0,
+  "counties": [],
+  "jurisdictions": [],
+  "meetings": []
 }
